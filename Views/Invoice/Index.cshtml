@@ -1,0 +1,74 @@
+﻿@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+@using  BackendAssignmentPt1.Models
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="/StyleSheet.css" rel="stylesheet" />
+    <title>Invoices</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Invoices</h2>
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        <div class="flex-container">
+            <div class="flex-item"><em>Customer</em></div>
+            <div class="flex-item-item"><em>Item</em></div>
+            <div class="flex-item"><em>Quantity</em></div>
+            <div class="flex-item"><em>Unit Price</em></div>
+            <div class="flex-item"><em>Amount</em></div>
+        </div>
+        <div class="flex-container">
+            @foreach (Invoice invoice in ViewBag.Invoices)
+            {
+                <div class="flex-item">
+                    @invoice.Customer.Firstname @invoice.Customer.Lastname
+                </div>
+
+                <div class="flex-item-item">
+                    @foreach (OrderItem orderItem in invoice.OrderItems)
+                    {
+
+                        @(orderItem.Product.Title + " (" + orderItem.Product.GetType().ToString().Substring(32) + ")") <br />
+
+
+                        @*if (orderItem.Product is Movie)
+                            {
+                                @(orderItem.Product.Title + " (Movie)") <br />
+                            }
+                            else if (orderItem.Product is Book)
+                            {
+                                @(orderItem.Product.Title + " (Book)") <br />
+                            }
+                            else
+                            {
+                                @(orderItem.Product.Title + " (Music CD)") <br />
+                            }*@
+                    }
+                    <strong>Total Price:</strong> <br />
+                </div>
+
+                <div class="flex-item">
+                    @foreach (OrderItem orderItem in invoice.OrderItems)
+                    {
+                        @orderItem.Quantity <br />
+                    }
+                </div>
+
+                <div class="flex-item">
+                    @foreach (OrderItem orderItem in invoice.OrderItems)
+                    {
+                        @(orderItem.Product.Price + " kr.") <br />
+                    }
+                </div>
+
+                <div class="flex-item">
+                    @foreach (OrderItem orderItem in invoice.OrderItems)
+                    {
+                        @(orderItem.TotalPrice + " kr.") <br />
+                    }
+                    <strong>@(invoice.TotalPrice + " kr.")</strong>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
