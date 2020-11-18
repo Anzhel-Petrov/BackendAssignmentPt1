@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Views",
+    "\\Views\\Invoice"
   ],
+  "SelectedNode": "\\BackendAssignmentPt1.sln",
   "PreviewInSolutionExplorer": false
 }

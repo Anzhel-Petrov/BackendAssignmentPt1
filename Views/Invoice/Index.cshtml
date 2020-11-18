@@ -26,7 +26,7 @@
                 <div class="flex-item-item">
                     @foreach (OrderItem orderItem in invoice.OrderItems)
                     {
-
+                    // display the type of the product by coverting to string and trimming 32 characters
                         @(orderItem.Product.Title + " (" + orderItem.Product.GetType().ToString().Substring(32) + ")") <br />
 
 

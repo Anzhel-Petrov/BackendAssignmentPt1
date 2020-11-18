@@ -16,7 +16,7 @@ namespace BackendAssignmentPt1.Models
         public string City { get; set; }
         public List<string> PhoneNumbers { get; } = new List<string>();
         public List<Invoice> Invoices { get; set; } = new List<Invoice>();
-
+        // a precise check of the age of the customer. We check weather or not the birthdate has passed for the current year
         public int Age
         {
             get
@@ -24,15 +24,18 @@ namespace BackendAssignmentPt1.Models
                 DateTime now = DateTime.Now;
                 int age;
                 age = now.Year - birthdate.Year;
+                // if birth month has not passes
                 if (now.Month < birthdate.Month ||
+                // check if the birth date is current date or it's passed
                 (now.Month == birthdate.Month && now.Day < birthdate.Day))
                 {
+                    // if none of the above is true substract one year of the age
                     age--;
                 }
                 return age;
             }
         }
-
+        // age validation
         public DateTime BirthDate
         {
             set

@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace BackendAssignmentPt1.Infrastructure
 {
+    // this Repository class act as a mockup data class for storing data. It is static 
+    // because the data should be the same for the whole application.
     public static class Repository
     {
         public static List<Product> Products = new List<Product>();
         public static List<Invoice> Invoices = new List<Invoice>();
-
+        // when called the constructor instantiates all the objects and the lists
         static Repository()
         {
 
